@@ -140,7 +140,7 @@ class Default(Profile):
     )
 
     era_ip = CalmVariable.Simple(
-        "",
+        "10.42.108.40",
         regex=r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$",
         is_mandatory=True,
         runtime=True,
