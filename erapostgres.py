@@ -115,7 +115,7 @@ class Default(Profile):
     deployments = [PostgresDeployment]
 
     compute_profile = CalmVariable.WithOptions.Predefined.string(
-        ["DEFAULT_OOB_COMPUTE", "SMALL_COMPUTE", "LARGE_COMPUTE"],
+        ["DEFAULT_OOB_COMPUTE", "LOW_OOB_COMPUTE"],
         default="DEFAULT_OOB_COMPUTE",
         is_mandatory=True,
         runtime=True,
@@ -147,10 +147,10 @@ class Default(Profile):
     )
 
     network_profile = CalmVariable.Simple(
-        "DEFAULT_OOB_NETWORK", is_mandatory=True, runtime=True
+        "PostGresNW", is_mandatory=True, runtime=True
     )
 
-    sla_name = CalmVariable.Simple("GOLD", is_mandatory=True, runtime=True)
+    sla_name = CalmVariable.Simple("DEFAULT_OOB_GOLD_SLA", is_mandatory=True, runtime=True)
 
     software_profile = CalmVariable.Simple(
         "POSTGRES_10.4_OOB", is_mandatory=True, runtime=True
