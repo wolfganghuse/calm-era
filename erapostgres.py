@@ -14,8 +14,10 @@ from calm.dsl.builtins import Deployment, Profile, Blueprint
 from calm.dsl.builtins import provider_spec, read_local_file
 
 
-CENTOS_PASSWD = read_local_file("passwd")
-DB_PASSWD = read_local_file("db_passwd")
+#CENTOS_PASSWD = read_local_file("passwd")
+#DB_PASSWD = read_local_file("db_passwd")
+CENTOS_PASSWD = "nx2Tech100!"
+DB_PASSWD = "nx21Tech100!"
 
 DefaultCred = basic_cred("admin", CENTOS_PASSWD, name="era_creds", default=True)
 
