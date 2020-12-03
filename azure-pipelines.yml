@@ -1,0 +1,59 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+name: 0.1.$(Rev:r)
+
+variables:
+  - group: hpoc-prism-central
+
+trigger:
+  - master
+
+pool: 'default'
+
+stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:
+  - job: Build
+    displayName: Build job
+    steps:
+    - task: Docker@2
+      displayName: Build image
+      inputs:
+        repository: wolfganghuse/calm-dsl
+        command: build
+        # arguments: '--no-cache'
+        tags: |
+          latest
+          $(Build.BuildId)
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'wolfganghuse-dockerhub'
+        repository: 'wolfganghuse/calm-dsl'
+        command: 'push'
+        tags: |
+          latest
+          $(Build.BuildId)             
+      
+- stage: Deploy
+  jobs:
+  - deployment: DeployCalm
+    displayName: 'Deploy to Calm'
+    container:
+      image: wolfganghuse/calm-dsl:latest
+    environment: 'dev'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: none
+          
+          - script: |
+              sudo ln -s /root/.local/bin/calm /usr/local/bin/calm
+              git clone https://github.com/wolfganghuse/calm-era.git
+              cd calm-era
+              sudo calm init dsl -i $(pc_ip) -P $(pc_port) -u $(pc_user) -p $(pc_pass) -pj $(calm_project)
+              sudo calm create bp -fc -f erapostgres.py
+              sudo py3clean .
