@@ -12,6 +12,7 @@ resp = urlreq(
 if resp.ok:
     print("DB_SERVER_IP={0}".format(json.loads(resp.content)["databaseNodes"][0]["dbserver"]["ipAddresses"]))
     print("DB_ID={0}".format(json.loads(resp.content)["id"]))
+    print("DB_SERVER_ID={0}".format(json.loads(resp.content)["databaseNodes"][0]["dbserver"]["id"]))
 else:
     print("Get DB info request failed", json.dumps(json.loads(resp.content), indent=4))
     exit(1)
