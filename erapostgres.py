@@ -115,7 +115,7 @@ class Default(Profile):
     deployments = [PostgresDeployment]
 
     compute_profile = CalmVariable.WithOptions.Predefined.string(
-        ["DEFAULT_OOB_COMPUTE", "LOW_OOB_COMPUTE"],
+        ["DEFAULT_OOB_COMPUTE", "LOW_OOB_COMPUTE","HIGH_OOB_COMPUTE"],
         default="LOW_OOB_COMPUTE",
         is_mandatory=True,
         runtime=True,
