@@ -80,6 +80,11 @@ class Era_PostgreSQL_DB(Substrate):
             filename="scripts/postgres/precreate/6GetDatabaseInfo.py",
             variables=["DB_SERVER_IP", "DB_ID", "DB_SERVER_ID"],
         )
+            CalmTask.Exec.escript(
+            name="7newFeat",
+            filename="scripts/postgres/postdelete/4MonitorDeregOp.py",
+        )
+
 
     @action
     def __post_delete__():
