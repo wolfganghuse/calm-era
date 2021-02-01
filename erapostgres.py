@@ -104,10 +104,6 @@ class Era_PostgreSQL_DB(Substrate):
             name="4MonitorDeregOp",
             filename="scripts/postgres/postdelete/4MonitorDeregOp.py",
         )
-        CalmTask.Exec.escript(
-            name="PostWork",
-            filename="scripts/postgres/postdelete/4MonitorDeregOp.py",
-        )
 
 
 class PostgresDeployment(Deployment):
