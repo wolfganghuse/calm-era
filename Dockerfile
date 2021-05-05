@@ -2,7 +2,7 @@ ARG VARIANT="3.7"
 FROM python:${VARIANT}
 
 ARG CALM_DSL_TARBALL="https://github.com/nutanix/calm-dsl/archive/master.zip"
-WORKDIR /root
+WORKDIR /
 RUN mkdir -p `python3 -m site --user-site`
 ENV PATH=/root/.local/bin:$PATH
 
