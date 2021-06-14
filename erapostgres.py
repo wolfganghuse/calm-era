@@ -114,10 +114,6 @@ class Era_PostgreSQL_DB(Substrate):
             name="6PostProzess",
             filename="scripts/postgres/postdelete/4MonitorDeregOp.py",
         )
-        CalmTask.Exec.escript(
-            name="7PostProzess",
-            filename="scripts/postgres/postdelete/4MonitorDeregOp.py",
-        )
 
 
 
