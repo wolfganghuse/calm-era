@@ -81,6 +81,12 @@ class Era_PostgreSQL_DB(Substrate):
             variables=["DB_SERVER_IP", "DB_ID", "DB_SERVER_ID"],
         )
 
+        CalmTask.SetVariable.escript(
+            name="7PostProcess",
+            filename="scripts/postgres/precreate/6GetDatabaseInfo.py",
+            variables=["DB_SERVER_IP", "DB_ID", "DB_SERVER_ID"],
+        )
+        
 
 
     @action
